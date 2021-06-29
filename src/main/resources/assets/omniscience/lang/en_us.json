@@ -1,0 +1,43 @@
+{
+  "message.enabled": "Omniscience enabled",
+  "message.disabled": "Omniscience disabled",
+
+  "key.category.omniscience": "Omniscience",
+  "key.omniscience.settings": "Open Settings",
+  "key.omniscience.enable": "Toggle Enabled",
+
+  "config.generic.title": "Generic",
+  "config.generic.enabled.title": "Enabled",
+  "config.generic.enabled.tooltip": "Completely enables or disables the mod",
+
+  "config.generic.sneak_cover.title": "Remove Sneak Cover",
+  "config.generic.sneak_cover.tooltip": "Show the name tag when a player is sneaking",
+  "config.generic.name_tag.title": "Show name labels of targets",
+  "config.generic.name_tag.tooltip": "Render the name tags if following condition is given",
+  "config.generic.name_tag.option.default": "Default",
+  "config.generic.name_tag.option.if_invisible": "Entity is invisible",
+  "config.generic.name_tag.option.always": "Always",
+  "config.generic.name_tag.option.never": "Never",
+
+  "config.generic.alpha.title": "Transparency of targets",
+  "config.generic.alpha.tooltip": "Sets the transparency of invisible entities",
+  "config.generic.glow.title": "Give targets glow effect",
+  "config.generic.glow.tooltip": "Makes chosen invisible targets glow",
+  "config.generic.glow.option.none": "None",
+  "config.generic.glow.option.player": "Players",
+  "config.generic.glow.option.all": "All Entities",
+
+  "config.generic.targeted.title": "Invisible Targets",
+  "config.generic.targeted.all.title": "All",
+  "config.generic.targeted.all.tooltip": "Target everything",
+  "config.generic.targeted.players.title": "Players",
+  "config.generic.targeted.players.tooltip": "",
+  "config.generic.targeted.monster.title": "Monster",
+  "config.generic.targeted.monster.tooltip": "",
+  "config.generic.targeted.villager.title": "NPCs",
+  "config.generic.targeted.villager.tooltip": "",
+  "config.generic.targeted.animals.title": "Animals",
+  "config.generic.targeted.animals.tooltip": "",
+  "config.generic.targeted.objects.title": "Objects",
+  "config.generic.targeted.objects.tooltip": ""
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mrqueequeg.omniscience.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "EntityMixin",
+    "ModelPartMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
