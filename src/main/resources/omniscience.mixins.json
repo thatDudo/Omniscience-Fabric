@@ -2,13 +2,14 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.mrqueequeg.omniscience.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
   ],
   "client": [
     "EntityMixin",
     "ModelPartMixin",
-    "LivingEntityRendererMixin"
+    "LivingEntityRendererMixin",
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

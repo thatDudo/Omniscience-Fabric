@@ -1,7 +1,9 @@
-# Omniscience-Fabric
-A fabric mod that reveals invisible entities.
+# Fabric Example Mod
 
-It also works on servers and is not detectable as long as you dont behave to much out of line.
+## Setup
 
-Supported Versions:
-1.16.x
+For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+
+## License
+
+This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
