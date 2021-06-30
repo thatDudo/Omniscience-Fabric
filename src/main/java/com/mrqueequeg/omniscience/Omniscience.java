@@ -5,9 +5,19 @@ import com.mrqueequeg.omniscience.gui.ScreenBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.block.entity.BannerBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.mob.*;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.GolemEntity;
+import net.minecraft.entity.passive.VillagerEntity;
+import net.minecraft.entity.passive.WanderingTraderEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
@@ -17,11 +27,13 @@ public class Omniscience implements ClientModInitializer {
 	public static final String MOD_NAME = "Omniscience";
 	public static final String CONFIG_FILE_NAME = Omniscience.MOD_ID+".json";
 
-	private static KeyBinding keyBindingOpenSettings;
-	private static KeyBinding keyToggleEnabled;
+	private KeyBinding keyBindingOpenSettings;
+	private KeyBinding keyToggleEnabled;
 
 	@Override
 	public void onInitializeClient() {
+
+		// This mods functionality is found within Mixins
 
 		ConfigManager.init();
 
@@ -46,7 +58,6 @@ public class Omniscience implements ClientModInitializer {
 			ScreenBuilder.openConfigScreen(client);
 		}
 		else if (keyToggleEnabled.wasPressed()) {
-			//client.inGameHud.getChatHud().addMessage(new TranslatableText(""));
 			if (client.player != null) {
 				if (ConfigManager.getConfig().enabled) {
 					ConfigManager.getConfig().enabled = false;

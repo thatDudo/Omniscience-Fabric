@@ -1,5 +1,6 @@
 package com.mrqueequeg.omniscience.gui;
 
+import com.mrqueequeg.omniscience.EntityTargetGroup;
 import com.mrqueequeg.omniscience.Omniscience;
 import com.mrqueequeg.omniscience.config.Config;
 import com.mrqueequeg.omniscience.config.ConfigManager;
@@ -74,15 +75,6 @@ public class ScreenBuilder {
                 .setSaveConsumer(n -> config.enabled = n)
                 .build();
 
-        // remove sneak cover
-        AbstractConfigListEntry<Boolean> toggleRemoveSneakCover = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.sneak_cover.title"), config.removeSneakCover)
-                .setDefaultValue(defaults.removeSneakCover)
-                .setTooltip(new TranslatableText("config.generic.sneak_cover.tooltip"))
-                .setSaveConsumer(n -> config.removeSneakCover = n)
-                .build();
-
-        // let all players glow
-
         // exclude self
 //        AbstractConfigListEntry<Boolean> toggleExcludeSelf = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.exclude_self.title"), config.excludeSelf)
 //                .setDefaultValue(defaults.excludeSelf)
@@ -104,53 +96,60 @@ public class ScreenBuilder {
                 .setSaveConsumer(config::setInvisibleEntityGlow)
                 .build();
 
-        // name tag
-        SelectionListEntry<String> selectorNameTag = entryBuilder.startSelector(new TranslatableText("config.generic.name_tag.title"), Config.ShowNameTagConditionStrings, config.getShowNameTagConditionString())
-                .setDefaultValue(defaults.getShowNameTagConditionString())
-                .setTooltip(new TranslatableText("config.generic.name_tag.tooltip"))
-                .setSaveConsumer(config::setShowNameTagCondition)
-                .build();
-
         // all
-        AbstractConfigListEntry<Boolean> toggleTargetAll = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.all.title"), config.targeted.all)
-                .setDefaultValue(defaults.targeted.all)
+        AbstractConfigListEntry<Boolean> toggleTargetAll = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.all.title"), config.isTargeted(EntityTargetGroup.ALL))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.ALL))
                 .setTooltip(new TranslatableText("config.generic.targeted.all.tooltip"))
-                .setSaveConsumer(n -> config.targeted.all = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.ALL, n))
                 .build();
 
         // players
-        AbstractConfigListEntry<Boolean> toggleTargetPlayers = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.players.title"), config.targeted.players)
-                .setDefaultValue(defaults.targeted.players)
+        AbstractConfigListEntry<Boolean> toggleTargetPlayers = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.players.title"), config.isTargeted(EntityTargetGroup.PLAYER))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.PLAYER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.players.tooltip"))
-                .setSaveConsumer(n -> config.targeted.players = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.PLAYER, n))
                 .build();
 
         // monster
-        AbstractConfigListEntry<Boolean> toggleTargetMonster = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.monster.title"), config.targeted.monster)
-                .setDefaultValue(defaults.targeted.monster)
+        AbstractConfigListEntry<Boolean> toggleTargetMonster = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.monster.title"), config.isTargeted(EntityTargetGroup.MONSTER))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.MONSTER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.monster.tooltip"))
-                .setSaveConsumer(n -> config.targeted.monster = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.MONSTER, n))
                 .build();
 
         // villager
-        AbstractConfigListEntry<Boolean> toggleTargetVillager = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.villager.title"), config.targeted.villager)
-                .setDefaultValue(defaults.targeted.villager)
+        AbstractConfigListEntry<Boolean> toggleTargetVillager = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.villager.title"), config.isTargeted(EntityTargetGroup.VILLAGER))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.VILLAGER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.villager.tooltip"))
-                .setSaveConsumer(n -> config.targeted.villager = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.VILLAGER, n))
                 .build();
 
         // animals
-        AbstractConfigListEntry<Boolean> toggleTargetAnimals = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.animals.title"), config.targeted.animals)
-                .setDefaultValue(defaults.targeted.animals)
+        AbstractConfigListEntry<Boolean> toggleTargetAnimals = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.animals.title"), config.isTargeted(EntityTargetGroup.ANIMAL))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.ANIMAL))
                 //.setTooltip(new TranslatableText("config.generic.targeted.animals.tooltip"))
-                .setSaveConsumer(n -> config.targeted.animals = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.ANIMAL, n))
                 .build();
 
         // objects
-        AbstractConfigListEntry<Boolean> toggleTargetObjects = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.objects.title"), config.targeted.objects)
-                .setDefaultValue(defaults.targeted.objects)
+        AbstractConfigListEntry<Boolean> toggleTargetObjects = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.objects.title"), config.isTargeted(EntityTargetGroup.OBJECT))
+                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.OBJECT))
                 //.setTooltip(new TranslatableText("config.generic.targeted.objects.tooltip"))
-                .setSaveConsumer(n -> config.targeted.objects = n)
+                .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.OBJECT, n))
+                .build();
+
+        // force render name tags
+        AbstractConfigListEntry<Boolean> toggleForceRenderNameTags = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.name_tags.force_render.title"), config.forceRenderNameTags)
+                .setDefaultValue(defaults.forceRenderNameTags)
+                //.setTooltip(new TranslatableText("config.generic.name_tags.force_render.tooltip"))
+                .setSaveConsumer(n -> config.forceRenderNameTags = n)
+                .build();
+
+        // remove sneak cover
+        AbstractConfigListEntry<Boolean> toggleRemoveSneakCover = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.name_tags.sneak_cover.title"), config.removeSneakCover)
+                .setDefaultValue(defaults.removeSneakCover)
+                .setTooltip(new TranslatableText("config.generic.name_tags.sneak_cover.tooltip"))
+                .setSaveConsumer(n -> config.removeSneakCover = n)
                 .build();
 
 
@@ -163,13 +162,17 @@ public class ScreenBuilder {
         subCatTargeted.add(toggleTargetObjects);
         subCatTargeted.setExpanded(true);
 
+        SubCategoryBuilder subCatNameTag = entryBuilder.startSubCategory(new TranslatableText("config.generic.name_tags.title"));
+        subCatNameTag.add(toggleForceRenderNameTags);
+        subCatNameTag.add(toggleRemoveSneakCover);
+        subCatNameTag.setExpanded(true);
+
         catGeneric.addEntry(toggleEnabled);
         //catGeneric.addEntry(toggleExcludeSelf);
-        catGeneric.addEntry(toggleRemoveSneakCover);
         catGeneric.addEntry(sliderAlpha);
         catGeneric.addEntry(selectorInvisibleEntityGlow);
-        //catGeneric.addEntry(selectorNameTag);
         catGeneric.addEntry(subCatTargeted.build());
+        catGeneric.addEntry(subCatNameTag.build());
 
         return builder.build();
     }

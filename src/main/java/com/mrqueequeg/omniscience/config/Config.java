@@ -1,6 +1,7 @@
 package com.mrqueequeg.omniscience.config;
 
 import com.google.gson.annotations.Expose;
+import com.mrqueequeg.omniscience.EntityTargetGroup;
 import net.minecraft.text.TranslatableText;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -8,32 +9,20 @@ public class Config {
 
     @Expose public boolean enabled = true;
     @Expose public boolean excludeSelf = true;
-    @Expose public boolean removeSneakCover = false;
     @Expose public float alpha = 0.40f;
     @Expose public int invisibleEntityGlow = 0;
-    @Expose public int showNameTagCondition = 0;
-    @Expose public TargetList targeted = new TargetList();
+    @Expose public int entityTargetGroup = EntityTargetGroup.PLAYER | EntityTargetGroup.MONSTER | EntityTargetGroup.VILLAGER | EntityTargetGroup.ANIMAL;
+    @Expose public boolean forceRenderNameTags = false;
+    @Expose public boolean removeSneakCover = false;
 
     @Expose public static final String[] InvisibleEntityGlowStrings = {
             new TranslatableText("config.generic.glow.option.none").getString(),
             new TranslatableText("config.generic.glow.option.player").getString(),
-            new TranslatableText("config.generic.glow.option.all").getString(),
+            new TranslatableText("config.generic.glow.option.match_targets").getString(),
     };
 
-    @Expose public static final String[] ShowNameTagConditionStrings = {
-            new TranslatableText("config.generic.name_tag.option.default").getString(),
-            new TranslatableText("config.generic.name_tag.option.always").getString(),
-            new TranslatableText("config.generic.name_tag.option.never").getString(),
-            new TranslatableText("config.generic.name_tag.option.if_invisible").getString(),
-    };
-
-    public static final class TargetList {
-        @Expose public boolean all = false;
-        @Expose public boolean players = true;
-        @Expose public boolean monster = true;
-        @Expose public boolean villager = true;
-        @Expose public boolean animals = true;
-        @Expose public boolean objects = false;
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public void setAlphaPercent(int i) {
@@ -44,7 +33,7 @@ public class Config {
     }
 
     public void setInvisibleEntityGlow(int i) {
-        if (i >= 0 && i < ShowNameTagConditionStrings.length) {
+        if (i >= 0 && i < InvisibleEntityGlowStrings.length) {
             invisibleEntityGlow = i;
         }
     }
@@ -58,19 +47,17 @@ public class Config {
         return InvisibleEntityGlowStrings[getInvisibleEntityGlow()];
     }
 
-    public void setShowNameTagCondition(int i) {
-        if (i >= 0 && i < ShowNameTagConditionStrings.length) {
-            showNameTagCondition = i;
-        }
+    public void setEntityTargetGroup(int group, boolean active) {
+        this.entityTargetGroup = active ? this.entityTargetGroup | group : this.entityTargetGroup & ~group;
     }
-    public int getShowNameTagCondition() {
-        return showNameTagCondition;
+
+    public boolean isTargeted(int group) {
+        return (this.entityTargetGroup & group) > 0;
     }
-    public void setShowNameTagCondition(String t) {
-        setShowNameTagCondition(ArrayUtils.indexOf(ShowNameTagConditionStrings, t));
-    }
-    public String getShowNameTagConditionString() {
-        return ShowNameTagConditionStrings[getShowNameTagCondition()];
+
+    public boolean shouldGroupGlow(int group) {
+        return group != 0 &&
+                (group == EntityTargetGroup.PLAYER && (invisibleEntityGlow == 1 && isTargeted(EntityTargetGroup.PLAYER)) || (invisibleEntityGlow == 2 && isTargeted(group)));
     }
 
     /**
@@ -95,12 +82,8 @@ public class Config {
             invisibleEntityGlow = InvisibleEntityGlowStrings.length-1;
             valid = false;
         }
-        if (showNameTagCondition < 0) {
-            showNameTagCondition = 0;
-            valid = false;
-        }
-        else if (showNameTagCondition > ShowNameTagConditionStrings.length) {
-            showNameTagCondition = ShowNameTagConditionStrings.length - 1;
+        if (entityTargetGroup < 0 || entityTargetGroup >= 64) {
+            entityTargetGroup = 0;
             valid = false;
         }
 

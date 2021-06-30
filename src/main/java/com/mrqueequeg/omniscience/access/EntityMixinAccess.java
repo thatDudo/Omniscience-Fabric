@@ -1,4 +1,5 @@
 package com.mrqueequeg.omniscience.access;
 
-public class EntityRendererMixinAccess {
+public interface EntityMixinAccess {
+    int getEntityTargetGroup();
 }
