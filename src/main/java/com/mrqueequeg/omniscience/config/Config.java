@@ -2,7 +2,9 @@ package com.mrqueequeg.omniscience.config;
 
 import com.google.gson.annotations.Expose;
 import com.mrqueequeg.omniscience.EntityTargetGroup;
+import com.mrqueequeg.omniscience.Omniscience;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.world.GameMode;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Config {
@@ -14,6 +16,7 @@ public class Config {
     @Expose public int entityTargetGroup = EntityTargetGroup.PLAYER | EntityTargetGroup.MONSTER | EntityTargetGroup.VILLAGER | EntityTargetGroup.ANIMAL;
     @Expose public boolean forceRenderNameTags = false;
     @Expose public boolean removeSneakCover = false;
+    @Expose public boolean onlyEnableInCreative = false;
 
     @Expose public static final String[] InvisibleEntityGlowStrings = {
             new TranslatableText("config.generic.glow.option.none").getString(),
@@ -22,7 +25,8 @@ public class Config {
     };
 
     public boolean isEnabled() {
-        return enabled;
+        GameMode gameMode = Omniscience.getGameMode();
+        return enabled && (!onlyEnableInCreative || (gameMode != null && gameMode.isCreative()));
     }
 
     public void setAlphaPercent(int i) {

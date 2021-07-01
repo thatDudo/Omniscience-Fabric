@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.block.entity.BannerBlockEntity;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
@@ -20,6 +22,7 @@ import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.GameMode;
 import org.lwjgl.glfw.GLFW;
 
 public class Omniscience implements ClientModInitializer {
@@ -69,5 +72,12 @@ public class Omniscience implements ClientModInitializer {
 				}
 			}
 		}
+	}
+
+	public static GameMode getGameMode() {
+		if (MinecraftClient.getInstance().interactionManager == null) {
+			return null;
+		}
+		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
 	}
 }
