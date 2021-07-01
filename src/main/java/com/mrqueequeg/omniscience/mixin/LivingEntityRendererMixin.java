@@ -21,7 +21,6 @@ public class LivingEntityRendererMixin {
             Config config = ConfigManager.getConfig();
             if (config.isEnabled() && config.forceRenderNameTags) {
                 if (config.shouldGroupGlow(((EntityMixinAccess)livingEntity).getEntityTargetGroup())) {
-                    //Logger.sendChatMessage(Text.of(Formatting.RED+"Name: "+((PlayerEntityRenderer)t)..getGameProfile().getName()+"; Shown: "+((PlayerEntity)t).getCustomName()));
                     info.setReturnValue(true);
                 }
             }

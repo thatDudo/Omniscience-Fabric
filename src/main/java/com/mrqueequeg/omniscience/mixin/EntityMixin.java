@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin implements EntityMixinAccess {
-    @Shadow public boolean inanimate;
     private int entityTargetGroup;
 
     public int getEntityTargetGroup() {
@@ -37,17 +36,6 @@ public abstract class EntityMixin implements EntityMixinAccess {
             }
         }
     }
-
-//    @Inject(at = @At("HEAD"), method = "isGlowing", cancellable = true)
-//    private void onIsGlowing(CallbackInfoReturnable<Boolean> info) {
-//        if (ConfigManager.getConfig().isEnabled()) {
-//            if (((Entity)(Object)this).isInvisible()) {
-//                if (ConfigManager.getConfig().shouldGroupGlow(entityTargetGroup)) {
-//                    info.setReturnValue(true);
-//                }
-//            }
-//        }
-//    }
 
     @Inject(at = @At("HEAD"), method = "isSneaky", cancellable = true)
     private void onIsSneaky(CallbackInfoReturnable<Boolean> info) {
