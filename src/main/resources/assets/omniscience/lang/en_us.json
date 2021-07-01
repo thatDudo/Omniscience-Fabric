@@ -33,8 +33,8 @@
   "config.generic.targeted.objects.tooltip": "",
 
   "config.generic.name_tags.title": "Nametag Settings",
-  "config.generic.name_tags.force_render.title": "Forcefully render nametags",
-  "config.generic.name_tags.force_render.tooltip": "",
+  "config.generic.name_tags.force_render.title": "Force render nametags",
+  "config.generic.name_tags.force_render.tooltip": "Prevents servers from hiding nametags",
   "config.generic.name_tags.sneak_cover.title": "Remove Sneak Cover",
-  "config.generic.name_tags.sneak_cover.tooltip": "Show the name tag when a player is sneaking"
+  "config.generic.name_tags.sneak_cover.tooltip": "Don't give a nametag more transparency when the owner is sneaking"
 }

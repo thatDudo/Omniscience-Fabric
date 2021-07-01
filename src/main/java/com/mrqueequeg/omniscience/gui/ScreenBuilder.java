@@ -141,7 +141,7 @@ public class ScreenBuilder {
         // force render name tags
         AbstractConfigListEntry<Boolean> toggleForceRenderNameTags = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.name_tags.force_render.title"), config.forceRenderNameTags)
                 .setDefaultValue(defaults.forceRenderNameTags)
-                //.setTooltip(new TranslatableText("config.generic.name_tags.force_render.tooltip"))
+                .setTooltip(new TranslatableText("config.generic.name_tags.force_render.tooltip"))
                 .setSaveConsumer(n -> config.forceRenderNameTags = n)
                 .build();
 
