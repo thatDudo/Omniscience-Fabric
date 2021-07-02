@@ -25,8 +25,7 @@ public class Config {
     };
 
     public boolean isEnabled() {
-        GameMode gameMode = Omniscience.getGameMode();
-        return enabled && (!onlyEnableInCreative || (gameMode != null && gameMode.isCreative()));
+        return enabled && (!onlyEnableInCreative || Omniscience.isCreative);
     }
 
     public void setAlphaPercent(int i) {

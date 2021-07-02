@@ -9,7 +9,8 @@
     "EntityMixin",
     "ModelPartMixin",
     "LivingEntityRendererMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "ClientPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

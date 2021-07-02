@@ -36,8 +36,6 @@ public class Omniscience implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 
-		// This mods functionality is found within Mixins
-
 		ConfigManager.init();
 
 		// adding keybinding to settings
@@ -74,10 +72,12 @@ public class Omniscience implements ClientModInitializer {
 		}
 	}
 
-	public static GameMode getGameMode() {
-		if (MinecraftClient.getInstance().interactionManager == null) {
-			return null;
-		}
-		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
-	}
+	public static boolean isCreative = true;
+
+//	public static GameMode getGameMode() {
+//		if (MinecraftClient.getInstance().interactionManager == null) {
+//			return null;
+//		}
+//		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
+//	}
 }
