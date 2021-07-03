@@ -14,15 +14,11 @@ public class ClientPlayerInteractionManagerMixin {
 
     @Inject(at = @At("HEAD"), method = "setGameModes")
     private void onSetGameModes(GameMode gameMode, GameMode previousGameMode, CallbackInfo info) {
-        if (ConfigManager.getConfig().enabled) {
-            Omniscience.isCreative = gameMode.isCreative();
-        }
+        Omniscience.isCreative = gameMode.isCreative();
     }
 
     @Inject(at = @At("HEAD"), method = "setGameMode")
     private void onSetGameMode(GameMode gameMode, CallbackInfo info) {
-        if (ConfigManager.getConfig().enabled) {
-            Omniscience.isCreative = gameMode.isCreative();
-        }
+        Omniscience.isCreative = gameMode.isCreative();
     }
 }

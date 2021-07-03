@@ -20,36 +20,6 @@ public class ScreenBuilder {
     public static boolean configScreenOpened = false;
 
     public static Screen buildConfigScreen(Screen parent) {
-        // TODO: better config screen
-        /*
-            - enabled
-            + invisibility revealer
-                - transparency (0...100)
-                //- mark with glow (None, Player, All)
-                (
-                + target list (mark | target)
-                    - All
-                    - Players
-                    - Monsters
-                    - Animals
-                    - Objects
-            + effects
-                - remove blindness effect
-            + highlighting
-                - (un)mark players with chat command
-                + highlight
-                    - All
-                    - Players
-                    - Monster
-                    - Animals
-                    - Objects
-                + name tags
-                    - force render
-                    - remove sneak coverage
-            + misc
-                - disallow inventory to be hidden by server
-                -
-         */
 
         configScreenOpened = true;
 
@@ -73,7 +43,7 @@ public class ScreenBuilder {
         BooleanToggleBuilder toggleEnabled = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.enabled.title"), config.enabled)
                 .setDefaultValue(defaults.enabled)
                 .setTooltip(new TranslatableText("config.generic.enabled.tooltip"))
-                .setSaveConsumer(Omniscience::setEnabled);
+                .setSaveConsumer(n -> config.enabled = n);
 
         // exclude self
 //        BooleanToggleBuilder toggleExcludeSelf = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.exclude_self.title"), config.excludeSelf)
@@ -176,10 +146,6 @@ public class ScreenBuilder {
         catGeneric.addEntry(subCatMisc.build());
 
         return builder.build();
-    }
-
-    public static void openConfigScreen() {
-        openConfigScreen(MinecraftClient.getInstance());
     }
 
     public static void openConfigScreen(MinecraftClient client) {

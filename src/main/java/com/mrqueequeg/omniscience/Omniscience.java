@@ -75,23 +75,21 @@ public class Omniscience implements ClientModInitializer {
 
 	public static boolean isCreative = true;
 
-	public static GameMode getGameMode() {
-		if (MinecraftClient.getInstance().interactionManager == null) {
-			return null;
-		}
-		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
-	}
+//	public static GameMode getGameMode() {
+//		if (MinecraftClient.getInstance().interactionManager == null) {
+//			return null;
+//		}
+//		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
+//	}
 
-	public static void setEnabled(boolean state) {
-		Config config = ConfigManager.getConfig();
-		if (state != config.enabled) {
-			if (state) { // If mod is getting enabled
-				GameMode gameMode = getGameMode();
-				if (gameMode != null) {
-					isCreative = getGameMode().isCreative();
-				}
-			}
-			config.enabled = state;
-		}
-	}
+//	public static void setModEnabled(boolean state) {
+//		Config config = ConfigManager.getConfig();
+//		if (config.enabled != state) {
+//			if (state) { // If mod is getting enabled
+//				GameMode gameMode = getGameMode();
+//				isCreative = gameMode != null && gameMode.isCreative();
+//			}
+//			config.enabled = state;
+//		}
+//	}
 }
