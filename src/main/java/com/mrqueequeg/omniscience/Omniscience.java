@@ -1,5 +1,6 @@
 package com.mrqueequeg.omniscience;
 
+import com.mrqueequeg.omniscience.config.Config;
 import com.mrqueequeg.omniscience.config.ConfigManager;
 import com.mrqueequeg.omniscience.gui.ScreenBuilder;
 import net.fabricmc.api.ClientModInitializer;
@@ -7,6 +8,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.block.entity.BannerBlockEntity;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
@@ -20,6 +23,7 @@ import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.GameMode;
 import org.lwjgl.glfw.GLFW;
 
 public class Omniscience implements ClientModInitializer {
@@ -32,8 +36,6 @@ public class Omniscience implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-
-		// This mods functionality is found within Mixins
 
 		ConfigManager.init();
 
@@ -61,13 +63,33 @@ public class Omniscience implements ClientModInitializer {
 			if (client.player != null) {
 				if (ConfigManager.getConfig().enabled) {
 					ConfigManager.getConfig().enabled = false;
-					client.player.sendMessage(new TranslatableText("message.disabled").formatted(Formatting.RED), true);
+					client.player.sendMessage(new TranslatableText("message.disabled", MOD_NAME).formatted(Formatting.RED), true);
 				}
 				else {
 					ConfigManager.getConfig().enabled = true;
-					client.player.sendMessage(new TranslatableText("message.enabled").formatted(Formatting.GREEN), true);
+					client.player.sendMessage(new TranslatableText("message.enabled", MOD_NAME).formatted(Formatting.GREEN), true);
 				}
 			}
 		}
 	}
+
+	public static boolean isCreative = true;
+
+//	public static GameMode getGameMode() {
+//		if (MinecraftClient.getInstance().interactionManager == null) {
+//			return null;
+//		}
+//		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
+//	}
+
+//	public static void setModEnabled(boolean state) {
+//		Config config = ConfigManager.getConfig();
+//		if (config.enabled != state) {
+//			if (state) { // If mod is getting enabled
+//				GameMode gameMode = getGameMode();
+//				isCreative = gameMode != null && gameMode.isCreative();
+//			}
+//			config.enabled = state;
+//		}
+//	}
 }

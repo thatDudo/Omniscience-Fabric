@@ -8,7 +8,9 @@
   "client": [
     "EntityMixin",
     "ModelPartMixin",
-    "LivingEntityRendererMixin"
+    "LivingEntityRendererMixin",
+    "MinecraftClientMixin",
+    "ClientPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

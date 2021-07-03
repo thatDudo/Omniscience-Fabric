@@ -1,6 +1,6 @@
 {
-  "message.enabled": "Omniscience enabled",
-  "message.disabled": "Omniscience disabled",
+  "message.enabled": "%s enabled",
+  "message.disabled": "%s disabled",
 
   "key.category.omniscience": "Omniscience",
   "key.omniscience.settings": "Open Settings",
@@ -12,15 +12,16 @@
 
   "config.generic.alpha.title": "Transparency of targets",
   "config.generic.alpha.tooltip": "Sets the transparency of invisible entities",
-  "config.generic.glow.title": "Give targets glow effect",
-  "config.generic.glow.tooltip": "Makes chosen invisible targets glow",
+  "config.generic.glow.title": "Give invisible entities glow effect",
+  "config.generic.glow.tooltip": "",
   "config.generic.glow.option.none": "None",
   "config.generic.glow.option.player": "Players",
   "config.generic.glow.option.match_targets": "Match Target List",
 
-  "config.generic.targeted.title": "Invisible Targets",
+  "config.generic.targeted.title": "Target Selection",
+  "config.generic.targeted.tooltip": "Which invisible entities should be revealed",
   "config.generic.targeted.all.title": "All",
-  "config.generic.targeted.all.tooltip": "Target everything",
+  "config.generic.targeted.all.tooltip": "",
   "config.generic.targeted.players.title": "Players",
   "config.generic.targeted.players.tooltip": "",
   "config.generic.targeted.monster.title": "Monster",
@@ -32,9 +33,13 @@
   "config.generic.targeted.objects.title": "Objects",
   "config.generic.targeted.objects.tooltip": "",
 
-  "config.generic.name_tags.title": "Nametag Settings",
-  "config.generic.name_tags.force_render.title": "Forcefully render nametags",
-  "config.generic.name_tags.force_render.tooltip": "",
+  "config.generic.name_tags.title": "Name Tags",
+  "config.generic.name_tags.force_render.title": "Force render name tags",
+  "config.generic.name_tags.force_render.tooltip": "Prevents servers from hiding name tags",
   "config.generic.name_tags.sneak_cover.title": "Remove Sneak Cover",
-  "config.generic.name_tags.sneak_cover.tooltip": "Show the name tag when a player is sneaking"
+  "config.generic.name_tags.sneak_cover.tooltip": "Don't give a name tag more transparency\nwhen the owner is sneaking",
+
+  "config.generic.misc.title": "Misc",
+  "config.generic.misc.only_creative.title": "Creative Only",
+  "config.generic.misc.only_creative.tooltip": "Only enable the mod if Game Mode is Creative"
 }
