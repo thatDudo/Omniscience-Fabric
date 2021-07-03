@@ -73,7 +73,7 @@ public class ScreenBuilder {
         BooleanToggleBuilder toggleEnabled = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.enabled.title"), config.enabled)
                 .setDefaultValue(defaults.enabled)
                 .setTooltip(new TranslatableText("config.generic.enabled.tooltip"))
-                .setSaveConsumer(n -> config.enabled = n);
+                .setSaveConsumer(Omniscience::setEnabled);
 
         // exclude self
 //        BooleanToggleBuilder toggleExcludeSelf = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.exclude_self.title"), config.excludeSelf)

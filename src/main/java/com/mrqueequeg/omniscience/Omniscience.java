@@ -1,5 +1,6 @@
 package com.mrqueequeg.omniscience;
 
+import com.mrqueequeg.omniscience.config.Config;
 import com.mrqueequeg.omniscience.config.ConfigManager;
 import com.mrqueequeg.omniscience.gui.ScreenBuilder;
 import net.fabricmc.api.ClientModInitializer;
@@ -74,10 +75,23 @@ public class Omniscience implements ClientModInitializer {
 
 	public static boolean isCreative = true;
 
-//	public static GameMode getGameMode() {
-//		if (MinecraftClient.getInstance().interactionManager == null) {
-//			return null;
-//		}
-//		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
-//	}
+	public static GameMode getGameMode() {
+		if (MinecraftClient.getInstance().interactionManager == null) {
+			return null;
+		}
+		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
+	}
+
+	public static void setEnabled(boolean state) {
+		Config config = ConfigManager.getConfig();
+		if (state != config.enabled) {
+			if (state) {
+				GameMode gameMode = getGameMode();
+				if (gameMode != null) {
+					isCreative = getGameMode().isCreative();
+				}
+			}
+			config.enabled = state;
+		}
+	}
 }
