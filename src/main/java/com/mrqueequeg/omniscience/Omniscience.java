@@ -63,11 +63,11 @@ public class Omniscience implements ClientModInitializer {
 			if (client.player != null) {
 				if (ConfigManager.getConfig().enabled) {
 					ConfigManager.getConfig().enabled = false;
-					client.player.sendMessage(new TranslatableText("message.disabled").formatted(Formatting.RED), true);
+					client.player.sendMessage(new TranslatableText("message.disabled", MOD_NAME).formatted(Formatting.RED), true);
 				}
 				else {
 					ConfigManager.getConfig().enabled = true;
-					client.player.sendMessage(new TranslatableText("message.enabled").formatted(Formatting.GREEN), true);
+					client.player.sendMessage(new TranslatableText("message.enabled", MOD_NAME).formatted(Formatting.GREEN), true);
 				}
 			}
 		}
@@ -85,7 +85,7 @@ public class Omniscience implements ClientModInitializer {
 	public static void setEnabled(boolean state) {
 		Config config = ConfigManager.getConfig();
 		if (state != config.enabled) {
-			if (state) {
+			if (state) { // If mod is getting enabled
 				GameMode gameMode = getGameMode();
 				if (gameMode != null) {
 					isCreative = getGameMode().isCreative();

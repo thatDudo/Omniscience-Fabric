@@ -1,6 +1,6 @@
 {
-  "message.enabled": "Omniscience enabled",
-  "message.disabled": "Omniscience disabled",
+  "message.enabled": "%s enabled",
+  "message.disabled": "%s disabled",
 
   "key.category.omniscience": "Omniscience",
   "key.omniscience.settings": "Open Settings",
