@@ -25,7 +25,7 @@ public abstract class EntityMixin implements EntityMixinAccess {
 
     @Inject(at = @At("RETURN"), method = "<init>")
     private void onInit(EntityType<?> type, World world, CallbackInfo info) {
-        entityTargetGroup = EntityTargetGroup.getEntityGroup((Entity)(Object)this);
+        entityTargetGroup = EntityTargetGroup.getEntityGroup((Entity)(Object)this) | EntityTargetGroup.ALL;
     }
 
     @Inject(at = @At("HEAD"), method = "isInvisibleTo", cancellable = true)
