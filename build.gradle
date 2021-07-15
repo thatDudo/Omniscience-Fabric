@@ -22,7 +22,8 @@ repositories {
 
 	// Mod Menu
 	maven {
-		url = "https://maven.terraformersmc.com/releases"
+//		url = "https://maven.terraformersmc.com/releases/"
+		url = "https://raw.githubusercontent.com/TerraformersMC/Archive/main/releases/"
 		content {
 			includeGroup "com.terraformersmc"
 		}

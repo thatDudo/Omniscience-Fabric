@@ -17,7 +17,11 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 public class ScreenBuilder {
-    public static boolean configScreenOpened = false;
+    private static boolean configScreenOpened = false;
+
+    public static boolean isConfigScreenOpened() {
+        return configScreenOpened;
+    }
 
     public static Screen buildConfigScreen(Screen parent) {
 
