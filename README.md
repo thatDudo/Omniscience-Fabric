@@ -10,5 +10,3 @@ _(Even though servers could be modded in a way so that they wont send any player
 ![Invisible Player](https://i.postimg.cc/QCCc73Vh/2021-06-30-16-02-56.png "")
 
 ![Settings Screen](https://i.postimg.cc/sDt5MbzC/2021-06-30-15-57-55.png "Settings Screen")
-
-_Source forge: https://www.curseforge.com/minecraft/mc-mods/omniscience-fabric_
