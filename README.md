@@ -6,7 +6,7 @@ _(Even though servers could be modded in a way so that they wont send any player
 
 ###### This mod runs on Fabric and requires the Fabric API: [How to install](https://fabricmc.net/ "How to install")
 
-#### Download Links: **[1.18.1](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.2%2B1.18.1/omniscience-fabric-mc1.18.1-1.0.2.jar)** | **[1.17.1](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.17.1/omniscience-fabric-mc1.17-1.0.1.jar)** | **[1.16.5](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.16.5/omniscience-fabric-mc1.16.5-1.0.1.jar)**
+#### Download Links: **[1.18.1](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.3%2B1.18.1/omniscience-fabric-mc1.18.1-1.0.3.jar)** | **[1.17.1](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.17.1/omniscience-fabric-mc1.17-1.0.1.jar)** | **[1.16.5](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.16.5/omniscience-fabric-mc1.16.5-1.0.1.jar)**
 
 
 ![Invisible Player](https://i.postimg.cc/QCCc73Vh/2021-06-30-16-02-56.png "")
