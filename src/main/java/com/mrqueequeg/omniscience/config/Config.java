@@ -10,13 +10,19 @@ import org.apache.commons.lang3.ArrayUtils;
 public class Config {
 
     @Expose public boolean enabled = true;
-    @Expose public boolean excludeSelf = true;
     @Expose public float alpha = 0.40f;
     @Expose public int invisibleEntityGlow = 0;
     @Expose public int entityTargetGroup = EntityTargetGroup.PLAYER | EntityTargetGroup.MONSTER | EntityTargetGroup.VILLAGER | EntityTargetGroup.ANIMAL;
-    @Expose public boolean forceRenderNameTags = false;
-    @Expose public boolean removeSneakCover = false;
+    @Expose public int forceRenderNameTags = 0;
+    @Expose public boolean exposeBarrierBlocks = false;
+    @Expose public boolean removeBlindnessEffect = false;
     @Expose public boolean onlyEnableInCreative = false;
+
+    @Expose public static final String[] ForceRenderNameTagsStrings = {
+            new TranslatableText("config.generic.misc.name_tags.option.never").getString(),
+            new TranslatableText("config.generic.misc.name_tags.option.when_sneaking").getString(),
+            new TranslatableText("config.generic.misc.name_tags.option.always").getString(),
+    };
 
     @Expose public static final String[] InvisibleEntityGlowStrings = {
             new TranslatableText("config.generic.glow.option.none").getString(),
@@ -33,6 +39,21 @@ public class Config {
     }
     public int getAlphaPercent() {
         return (int) (alpha * 100);
+    }
+
+    public void setForceRenderNameTags(int i) {
+        if (i >= 0 && i < ForceRenderNameTagsStrings.length) {
+            forceRenderNameTags = i;
+        }
+    }
+    public int getForceRenderNameTags() {
+        return forceRenderNameTags;
+    }
+    public void setForceRenderNameTags(String t) {
+        setForceRenderNameTags(ArrayUtils.indexOf(ForceRenderNameTagsStrings, t));
+    }
+    public String getForceRenderNameTagsString() {
+        return ForceRenderNameTagsStrings[forceRenderNameTags];
     }
 
     public void setInvisibleEntityGlow(int i) {

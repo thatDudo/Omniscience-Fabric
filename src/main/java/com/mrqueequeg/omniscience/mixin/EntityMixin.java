@@ -40,7 +40,7 @@ public abstract class EntityMixin implements EntityMixinAccess {
     @Inject(at = @At("HEAD"), method = "isSneaky", cancellable = true)
     private void onIsSneaky(CallbackInfoReturnable<Boolean> info) {
         if (ConfigManager.getConfig().isEnabled()) {
-            if (ConfigManager.getConfig().removeSneakCover) {
+            if (ConfigManager.getConfig().getForceRenderNameTags() == 1) {
                 info.setReturnValue(false);
             }
         }

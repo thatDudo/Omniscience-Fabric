@@ -19,7 +19,7 @@ public class LivingEntityRendererMixin {
     public void onShouldRenderName(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> info) {
         if (ConfigManager.getConfig().isEnabled()) {
             Config config = ConfigManager.getConfig();
-            if (config.isEnabled() && config.forceRenderNameTags) {
+            if (config.isEnabled() && config.getForceRenderNameTags() == 2) {
                 if (config.shouldGroupGlow(((EntityMixinAccess)livingEntity).getEntityTargetGroup())) {
                     info.setReturnValue(true);
                 }

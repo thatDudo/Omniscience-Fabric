@@ -7,6 +7,7 @@ import com.mrqueequeg.omniscience.config.ConfigManager;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import me.shedaniel.clothconfig2.gui.entries.SubCategoryListEntry;
 import me.shedaniel.clothconfig2.impl.builders.BooleanToggleBuilder;
 import me.shedaniel.clothconfig2.impl.builders.IntSliderBuilder;
 import me.shedaniel.clothconfig2.impl.builders.SelectorBuilder;
@@ -18,6 +19,8 @@ import net.minecraft.text.TranslatableText;
 
 public class ScreenBuilder {
     private static boolean configScreenOpened = false;
+    private static SubCategoryListEntry subCatTargeted;
+    private static SubCategoryListEntry subCatMisc;
 
     public static boolean isConfigScreenOpened() {
         return configScreenOpened;
@@ -37,6 +40,7 @@ public class ScreenBuilder {
                 //.setDoesConfirmSave(true)
                 .setSavingRunnable(() -> {
                     configScreenOpened = false;
+
                     ConfigManager.writeConfig(true);
                 });
 
@@ -48,12 +52,6 @@ public class ScreenBuilder {
                 .setDefaultValue(defaults.enabled)
                 .setTooltip(new TranslatableText("config.generic.enabled.tooltip"))
                 .setSaveConsumer(n -> config.enabled = n);
-
-        // exclude self
-//        BooleanToggleBuilder toggleExcludeSelf = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.exclude_self.title"), config.excludeSelf)
-//                .setDefaultValue(defaults.excludeSelf)
-//                .setTooltip(new TranslatableText("config.generic.exclude_self.tooltip"))
-//                .setSaveConsumer(n -> config.excludeSelf = n);
 
         // alpha
         IntSliderBuilder sliderAlpha = entryBuilder.startIntSlider(new TranslatableText("config.generic.alpha.title"), config.getAlphaPercent(), 0, 100)
@@ -70,7 +68,7 @@ public class ScreenBuilder {
         // all
         BooleanToggleBuilder toggleTargetAll = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.all.title"), config.isTargeted(EntityTargetGroup.ALL))
                 .setDefaultValue(defaults.isTargeted(EntityTargetGroup.ALL))
-                .setTooltip(new TranslatableText("config.generic.targeted.all.tooltip"))
+//                .setTooltip(new TranslatableText("config.generic.targeted.all.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.ALL, n));
 
         // players
@@ -104,16 +102,22 @@ public class ScreenBuilder {
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.OBJECT, n));
 
         // force render name tags
-        BooleanToggleBuilder toggleForceRenderNameTags = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.name_tags.force_render.title"), config.forceRenderNameTags)
-                .setDefaultValue(defaults.forceRenderNameTags)
-                .setTooltip(new TranslatableText("config.generic.name_tags.force_render.tooltip"))
-                .setSaveConsumer(n -> config.forceRenderNameTags = n);
+        SelectorBuilder<String> toggleForceRenderNameTags = entryBuilder.startSelector(new TranslatableText("config.generic.misc.name_tags.title"), Config.ForceRenderNameTagsStrings, config.getForceRenderNameTagsString())
+                .setDefaultValue(defaults.getForceRenderNameTagsString())
+                .setTooltip(new TranslatableText("config.generic.misc.name_tags.tooltip"))
+                .setSaveConsumer(config::setForceRenderNameTags);
 
-        // remove sneak cover
-        BooleanToggleBuilder toggleRemoveSneakCover = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.name_tags.sneak_cover.title"), config.removeSneakCover)
-                .setDefaultValue(defaults.removeSneakCover)
-                .setTooltip(new TranslatableText("config.generic.name_tags.sneak_cover.tooltip"))
-                .setSaveConsumer(n -> config.removeSneakCover = n);
+        // remove blindness effect
+        BooleanToggleBuilder toggleRemoveBlindness = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.misc.remove_blindness.title"), config.removeBlindnessEffect)
+                .setDefaultValue(defaults.removeBlindnessEffect)
+                .setTooltip(new TranslatableText("config.generic.misc.remove_blindness.tooltip"))
+                .setSaveConsumer(n -> config.removeBlindnessEffect = n);
+
+        // expose barrier blocks
+        BooleanToggleBuilder toggleExposeBarriers = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.misc.expose_barriers.title"), config.exposeBarrierBlocks)
+                .setDefaultValue(defaults.exposeBarrierBlocks)
+                .setTooltip(new TranslatableText("config.generic.misc.expose_barriers.tooltip"))
+                .setSaveConsumer(n -> config.exposeBarrierBlocks = n);
 
         // only enable in creative
         BooleanToggleBuilder toggleOnlyEnableInCreative = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.misc.only_creative.title"), config.onlyEnableInCreative)
@@ -122,32 +126,31 @@ public class ScreenBuilder {
                 .setSaveConsumer(n -> config.onlyEnableInCreative = n);
 
 
-        SubCategoryBuilder subCatTargeted = entryBuilder.startSubCategory(new TranslatableText("config.generic.targeted.title"));
-        subCatTargeted.setTooltip(new TranslatableText("config.generic.targeted.tooltip"));
-        subCatTargeted.add(toggleTargetAll.build());
-        subCatTargeted.add(toggleTargetPlayers.build());
-        subCatTargeted.add(toggleTargetMonster.build());
-        subCatTargeted.add(toggleTargetVillager.build());
-        subCatTargeted.add(toggleTargetAnimals.build());
-        subCatTargeted.add(toggleTargetObjects.build());
-        subCatTargeted.setExpanded(false);
+        SubCategoryBuilder subCatTargetedBuilder = entryBuilder.startSubCategory(new TranslatableText("config.generic.targeted.title"));
+        subCatTargetedBuilder.setTooltip(new TranslatableText("config.generic.targeted.tooltip"));
+        subCatTargetedBuilder.add(toggleTargetAll.build());
+        subCatTargetedBuilder.add(toggleTargetPlayers.build());
+        subCatTargetedBuilder.add(toggleTargetMonster.build());
+        subCatTargetedBuilder.add(toggleTargetVillager.build());
+        subCatTargetedBuilder.add(toggleTargetAnimals.build());
+        subCatTargetedBuilder.add(toggleTargetObjects.build());
+        subCatTargetedBuilder.setExpanded(subCatTargeted != null && subCatTargeted.isExpanded());
+        subCatTargeted = subCatTargetedBuilder.build();
 
-        SubCategoryBuilder subCatNameTag = entryBuilder.startSubCategory(new TranslatableText("config.generic.name_tags.title"));
-        subCatNameTag.add(toggleForceRenderNameTags.build());
-        subCatNameTag.add(toggleRemoveSneakCover.build());
-        subCatNameTag.setExpanded(false);
+        SubCategoryBuilder subCatMiscBuilder = entryBuilder.startSubCategory(new TranslatableText("config.generic.misc.title"));
+        subCatMiscBuilder.add(toggleForceRenderNameTags.build());
+        subCatMiscBuilder.add(toggleRemoveBlindness.build());
+        subCatMiscBuilder.add(toggleExposeBarriers.build());
+        subCatMiscBuilder.add(toggleOnlyEnableInCreative.build());
+        subCatMiscBuilder.setExpanded(subCatMisc != null && subCatMisc.isExpanded());
+        subCatMisc = subCatMiscBuilder.build();
 
-        SubCategoryBuilder subCatMisc = entryBuilder.startSubCategory(new TranslatableText("config.generic.misc.title"));
-        subCatMisc.add(toggleOnlyEnableInCreative.build());
-        subCatMisc.setExpanded(false);
 
         catGeneric.addEntry(toggleEnabled.build());
-        //catGeneric.addEntry(toggleExcludeSelf.build());
         catGeneric.addEntry(sliderAlpha.build());
         catGeneric.addEntry(selectorInvisibleEntityGlow.build());
-        catGeneric.addEntry(subCatTargeted.build());
-        catGeneric.addEntry(subCatNameTag.build());
-        catGeneric.addEntry(subCatMisc.build());
+        catGeneric.addEntry(subCatTargeted);
+        catGeneric.addEntry(subCatMisc);
 
         return builder.build();
     }
