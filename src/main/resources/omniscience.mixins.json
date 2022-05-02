@@ -12,7 +12,8 @@
     "MinecraftClientMixin",
     "ClientPlayerInteractionManagerMixin",
     "LivingEntityMixin",
-    "ClientWorldMixin"
+    "ClientWorldMixin",
+    "SheepWoolFeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

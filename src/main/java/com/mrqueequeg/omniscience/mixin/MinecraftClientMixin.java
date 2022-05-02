@@ -16,7 +16,7 @@ public class MinecraftClientMixin {
     private void onHasOutline(Entity entity, CallbackInfoReturnable<Boolean> info) {
         if (ConfigManager.getConfig().isEnabled()) {
             if (entity.isInvisible()) {
-                if (ConfigManager.getConfig().shouldGroupGlow(((EntityMixinAccess)entity).getEntityTargetGroup())) {
+                if (ConfigManager.getConfig().shouldEntityGlow(entity)) {
                     info.setReturnValue(true);
                 }
             }

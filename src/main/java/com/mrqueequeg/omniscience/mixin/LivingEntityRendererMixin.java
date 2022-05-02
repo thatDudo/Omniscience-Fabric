@@ -20,7 +20,7 @@ public class LivingEntityRendererMixin {
         if (ConfigManager.getConfig().isEnabled()) {
             Config config = ConfigManager.getConfig();
             if (config.isEnabled() && config.getForceRenderNameTags() == 2) {
-                if (config.shouldGroupGlow(((EntityMixinAccess)livingEntity).getEntityTargetGroup())) {
+                if (config.shouldEntityGlow(livingEntity)) {
                     info.setReturnValue(true);
                 }
             }

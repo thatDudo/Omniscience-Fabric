@@ -66,38 +66,38 @@ public class ScreenBuilder {
                 .setSaveConsumer(config::setInvisibleEntityGlow);
 
         // all
-        BooleanToggleBuilder toggleTargetAll = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.all.title"), config.isTargeted(EntityTargetGroup.ALL))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.ALL))
+        BooleanToggleBuilder toggleTargetAll = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.all.title"), config.isGroupTargeted(EntityTargetGroup.ALL))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.ALL))
 //                .setTooltip(new TranslatableText("config.generic.targeted.all.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.ALL, n));
 
         // players
-        BooleanToggleBuilder toggleTargetPlayers = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.players.title"), config.isTargeted(EntityTargetGroup.PLAYER))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.PLAYER))
+        BooleanToggleBuilder toggleTargetPlayers = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.players.title"), config.isGroupTargeted(EntityTargetGroup.PLAYER))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.PLAYER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.players.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.PLAYER, n));
 
         // monster
-        BooleanToggleBuilder toggleTargetMonster = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.monster.title"), config.isTargeted(EntityTargetGroup.MONSTER))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.MONSTER))
+        BooleanToggleBuilder toggleTargetMonster = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.monster.title"), config.isGroupTargeted(EntityTargetGroup.MONSTER))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.MONSTER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.monster.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.MONSTER, n));
 
         // villager
-        BooleanToggleBuilder toggleTargetVillager = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.villager.title"), config.isTargeted(EntityTargetGroup.VILLAGER))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.VILLAGER))
+        BooleanToggleBuilder toggleTargetVillager = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.villager.title"), config.isGroupTargeted(EntityTargetGroup.VILLAGER))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.VILLAGER))
                 //.setTooltip(new TranslatableText("config.generic.targeted.villager.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.VILLAGER, n));
 
         // animals
-        BooleanToggleBuilder toggleTargetAnimals = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.animals.title"), config.isTargeted(EntityTargetGroup.ANIMAL))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.ANIMAL))
+        BooleanToggleBuilder toggleTargetAnimals = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.animals.title"), config.isGroupTargeted(EntityTargetGroup.ANIMAL))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.ANIMAL))
                 //.setTooltip(new TranslatableText("config.generic.targeted.animals.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.ANIMAL, n));
 
         // objects
-        BooleanToggleBuilder toggleTargetObjects = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.objects.title"), config.isTargeted(EntityTargetGroup.OBJECT))
-                .setDefaultValue(defaults.isTargeted(EntityTargetGroup.OBJECT))
+        BooleanToggleBuilder toggleTargetObjects = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.targeted.objects.title"), config.isGroupTargeted(EntityTargetGroup.OBJECT))
+                .setDefaultValue(defaults.isGroupTargeted(EntityTargetGroup.OBJECT))
                 //.setTooltip(new TranslatableText("config.generic.targeted.objects.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.OBJECT, n));
 
