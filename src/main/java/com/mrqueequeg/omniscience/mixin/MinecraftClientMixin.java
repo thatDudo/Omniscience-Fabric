@@ -1,6 +1,5 @@
 package com.mrqueequeg.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.access.EntityMixinAccess;
 import com.mrqueequeg.omniscience.config.ConfigManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -16,7 +15,7 @@ public class MinecraftClientMixin {
     private void onHasOutline(Entity entity, CallbackInfoReturnable<Boolean> info) {
         if (ConfigManager.getConfig().isEnabled()) {
             if (entity.isInvisible()) {
-                if (ConfigManager.getConfig().shouldEntityGlow(entity)) {
+                if (ConfigManager.getConfig().shouldEntityTypeGlow(entity)) {
                     info.setReturnValue(true);
                 }
             }

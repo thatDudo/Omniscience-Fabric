@@ -81,7 +81,7 @@ public class Config {
         return (this.entityTargetGroup & group) > 0;
     }
 
-    public boolean isEntityTargeted(Entity entity) {
+    public boolean isEntityTypeTargeted(Entity entity) {
         return isGroupTargeted(((EntityMixinAccess)entity).getEntityTargetGroup());
     }
 
@@ -90,7 +90,7 @@ public class Config {
                 (group == EntityTargetGroup.PLAYER && (invisibleEntityGlow == 1 && isGroupTargeted(EntityTargetGroup.PLAYER)) || (invisibleEntityGlow == 2 && isGroupTargeted(group)));
     }
 
-    public boolean shouldEntityGlow(Entity entity) {
+    public boolean shouldEntityTypeGlow(Entity entity) {
         return shouldGroupGlow(((EntityMixinAccess)entity).getEntityTargetGroup());
     }
 
