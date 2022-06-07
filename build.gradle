@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -22,8 +22,8 @@ repositories {
 
 	// Mod Menu
 	maven {
-//		url = "https://maven.terraformersmc.com/releases/"
-		url = "https://raw.githubusercontent.com/TerraformersMC/Archive/main/releases/"
+		url = "https://maven.terraformersmc.com/releases/"
+//		url = "https://raw.githubusercontent.com/TerraformersMC/Archive/main/releases/"
 		content {
 			includeGroup "com.terraformersmc"
 		}

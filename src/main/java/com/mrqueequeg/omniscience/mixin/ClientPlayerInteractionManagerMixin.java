@@ -1,7 +1,6 @@
 package com.mrqueequeg.omniscience.mixin;
 
 import com.mrqueequeg.omniscience.Omniscience;
-import com.mrqueequeg.omniscience.config.ConfigManager;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;

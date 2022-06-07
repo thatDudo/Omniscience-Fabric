@@ -5,7 +5,7 @@ import com.mrqueequeg.omniscience.EntityTargetGroup;
 import com.mrqueequeg.omniscience.Omniscience;
 import com.mrqueequeg.omniscience.access.EntityMixinAccess;
 import net.minecraft.entity.Entity;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Config {
@@ -21,15 +21,15 @@ public class Config {
     public String ff = "";
 
     @Expose public static final String[] ForceRenderNameTagsStrings = {
-            new TranslatableText("config.generic.misc.name_tags.option.never").getString(),
-            new TranslatableText("config.generic.misc.name_tags.option.when_sneaking").getString(),
-            new TranslatableText("config.generic.misc.name_tags.option.always").getString(),
+            Text.translatable("config.generic.misc.name_tags.option.never").getString(),
+            Text.translatable("config.generic.misc.name_tags.option.when_sneaking").getString(),
+            Text.translatable("config.generic.misc.name_tags.option.always").getString(),
     };
 
     @Expose public static final String[] InvisibleEntityGlowStrings = {
-            new TranslatableText("config.generic.glow.option.none").getString(),
-            new TranslatableText("config.generic.glow.option.player").getString(),
-            new TranslatableText("config.generic.glow.option.match_targets").getString(),
+            Text.translatable("config.generic.glow.option.none").getString(),
+            Text.translatable("config.generic.glow.option.player").getString(),
+            Text.translatable("config.generic.glow.option.match_targets").getString(),
     };
 
     public boolean isEnabled() {
