@@ -1,9 +1,9 @@
-package com.mrqueequeg.omniscience.config;
+package com.thatdudo.omniscience.config;
 
 import com.google.gson.annotations.Expose;
-import com.mrqueequeg.omniscience.EntityTargetGroup;
-import com.mrqueequeg.omniscience.Omniscience;
-import com.mrqueequeg.omniscience.access.EntityMixinAccess;
+import com.thatdudo.omniscience.util.EntityTargetGroup;
+import com.thatdudo.omniscience.Omniscience;
+import com.thatdudo.omniscience.access.EntityMixinAccess;
 import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
 import org.apache.commons.lang3.ArrayUtils;
@@ -18,7 +18,6 @@ public class Config {
     @Expose public boolean exposeBarrierBlocks = false;
     @Expose public boolean removeBlindnessEffect = false;
     @Expose public boolean onlyEnableInCreative = false;
-    public String ff = "";
 
     @Expose public static final String[] ForceRenderNameTagsStrings = {
             Text.translatable("config.generic.misc.name_tags.option.never").getString(),
@@ -81,16 +80,15 @@ public class Config {
         return (this.entityTargetGroup & group) > 0;
     }
 
-    public boolean isEntityTypeTargeted(Entity entity) {
+    public boolean isEntityTargeted(Entity entity) {
         return isGroupTargeted(((EntityMixinAccess)entity).getEntityTargetGroup());
     }
 
     public boolean shouldGroupGlow(int group) {
-        return group != 0 &&
-                (group == EntityTargetGroup.PLAYER && (invisibleEntityGlow == 1 && isGroupTargeted(EntityTargetGroup.PLAYER)) || (invisibleEntityGlow == 2 && isGroupTargeted(group)));
+        return ((invisibleEntityGlow == 1 && (group & EntityTargetGroup.PLAYER) > 0) || (invisibleEntityGlow == 2 && isGroupTargeted(group)));
     }
 
-    public boolean shouldEntityTypeGlow(Entity entity) {
+    public boolean shouldEntityGlow(Entity entity) {
         return shouldGroupGlow(((EntityMixinAccess)entity).getEntityTargetGroup());
     }
 

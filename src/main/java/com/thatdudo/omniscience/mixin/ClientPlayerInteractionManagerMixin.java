@@ -1,6 +1,6 @@
-package com.mrqueequeg.omniscience.mixin;
+package com.thatdudo.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.Omniscience;
+import com.thatdudo.omniscience.Omniscience;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerInteractionManager.class)
 public class ClientPlayerInteractionManagerMixin {
-
     @Inject(at = @At("HEAD"), method = "setGameModes")
     private void onSetGameModes(GameMode gameMode, GameMode previousGameMode, CallbackInfo info) {
         Omniscience.isCreative = gameMode.isCreative();

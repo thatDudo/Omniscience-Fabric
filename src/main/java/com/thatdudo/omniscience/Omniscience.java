@@ -1,7 +1,7 @@
-package com.mrqueequeg.omniscience;
+package com.thatdudo.omniscience;
 
-import com.mrqueequeg.omniscience.config.ConfigManager;
-import com.mrqueequeg.omniscience.gui.ScreenBuilder;
+import com.thatdudo.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.gui.ScreenBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -19,6 +19,8 @@ public class Omniscience implements ClientModInitializer {
 
 	private KeyBinding keyBindingOpenSettings;
 	private KeyBinding keyToggleEnabled;
+	public static boolean isCreative = true;
+
 
 	@Override
 	public void onInitializeClient() {
@@ -58,24 +60,4 @@ public class Omniscience implements ClientModInitializer {
 			}
 		}
 	}
-
-	public static boolean isCreative = true;
-
-//	public static GameMode getGameMode() {
-//		if (MinecraftClient.getInstance().interactionManager == null) {
-//			return null;
-//		}
-//		return MinecraftClient.getInstance().interactionManager.getCurrentGameMode();
-//	}
-
-//	public static void setModEnabled(boolean state) {
-//		Config config = ConfigManager.getConfig();
-//		if (config.enabled != state) {
-//			if (state) { // If mod is getting enabled
-//				GameMode gameMode = getGameMode();
-//				isCreative = gameMode != null && gameMode.isCreative();
-//			}
-//			config.enabled = state;
-//		}
-//	}
 }

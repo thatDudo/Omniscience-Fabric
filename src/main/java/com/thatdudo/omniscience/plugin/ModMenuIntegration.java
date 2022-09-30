@@ -1,6 +1,6 @@
-package com.mrqueequeg.omniscience.plugin;
+package com.thatdudo.omniscience.plugin;
 
-import com.mrqueequeg.omniscience.gui.ScreenBuilder;
+import com.thatdudo.omniscience.gui.ScreenBuilder;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.fabricmc.api.EnvType;

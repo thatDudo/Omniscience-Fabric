@@ -1,4 +1,4 @@
-package com.mrqueequeg.omniscience.access;
+package com.thatdudo.omniscience.access;
 
 public interface EntityMixinAccess {
     int getEntityTargetGroup();

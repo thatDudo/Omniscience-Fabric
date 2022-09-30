@@ -1,7 +1,7 @@
-package com.mrqueequeg.omniscience.mixin;
+package com.thatdudo.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.config.Config;
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.config.Config;
+import com.thatdudo.omniscience.config.ConfigManager;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -39,7 +39,7 @@ public class SheepWoolFeatureRendererMixin {
     private void onRender(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, SheepEntity sheepEntity, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
         Config config = ConfigManager.getConfig();
 
-        if (config.isEnabled() && sheepEntity.isInvisible() && !sheepEntity.isSheared() && config.isEntityTypeTargeted(sheepEntity)) {
+        if (config.isEnabled() && sheepEntity.isInvisible() && !sheepEntity.isSheared() && config.isEntityTargeted(sheepEntity)) {
 
             _context.getModel().copyStateTo(this.model);
             this.model.animateModel(sheepEntity, f, g, h);

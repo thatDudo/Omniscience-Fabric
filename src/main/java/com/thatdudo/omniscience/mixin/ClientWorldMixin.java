@@ -1,6 +1,6 @@
-package com.mrqueequeg.omniscience.mixin;
+package com.thatdudo.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.config.ConfigManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientWorld.class)
 public class ClientWorldMixin {
-
     @Shadow @Final private MinecraftClient client;
 
     @Inject(at = @At("HEAD"), method = "getBlockParticle", cancellable = true)

@@ -1,9 +1,9 @@
-package com.mrqueequeg.omniscience.gui;
+package com.thatdudo.omniscience.gui;
 
-import com.mrqueequeg.omniscience.EntityTargetGroup;
-import com.mrqueequeg.omniscience.Omniscience;
-import com.mrqueequeg.omniscience.config.Config;
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.util.EntityTargetGroup;
+import com.thatdudo.omniscience.Omniscience;
+import com.thatdudo.omniscience.config.Config;
+import com.thatdudo.omniscience.config.ConfigManager;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
