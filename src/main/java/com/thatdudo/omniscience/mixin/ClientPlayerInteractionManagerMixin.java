@@ -1,7 +1,6 @@
-package com.mrqueequeg.omniscience.mixin;
+package com.thatdudo.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.Omniscience;
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.Omniscience;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,11 +13,11 @@ public class ClientPlayerInteractionManagerMixin {
 
     @Inject(at = @At("HEAD"), method = "setGameModes")
     private void onSetGameModes(GameMode gameMode, GameMode previousGameMode, CallbackInfo info) {
-        Omniscience.isCreative = gameMode.isCreative();
+        Omniscience.isGameModeCreative = gameMode.isCreative();
     }
 
     @Inject(at = @At("HEAD"), method = "setGameMode")
     private void onSetGameMode(GameMode gameMode, CallbackInfo info) {
-        Omniscience.isCreative = gameMode.isCreative();
+        Omniscience.isGameModeCreative = gameMode.isCreative();
     }
 }

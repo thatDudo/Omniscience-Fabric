@@ -1,9 +1,9 @@
-package com.mrqueequeg.omniscience.gui;
+package com.thatdudo.omniscience.gui;
 
-import com.mrqueequeg.omniscience.EntityTargetGroup;
-import com.mrqueequeg.omniscience.Omniscience;
-import com.mrqueequeg.omniscience.config.Config;
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.util.EntityTargetGroup;
+import com.thatdudo.omniscience.Omniscience;
+import com.thatdudo.omniscience.config.Config;
+import com.thatdudo.omniscience.config.ConfigManager;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
@@ -27,7 +27,6 @@ public class ScreenBuilder {
     }
 
     public static Screen buildConfigScreen(Screen parent) {
-
         configScreenOpened = true;
 
         Config config = ConfigManager.getConfig();
@@ -40,7 +39,6 @@ public class ScreenBuilder {
                 //.setDoesConfirmSave(true)
                 .setSavingRunnable(() -> {
                     configScreenOpened = false;
-
                     ConfigManager.writeConfig(true);
                 });
 
@@ -101,12 +99,6 @@ public class ScreenBuilder {
                 //.setTooltip(new TranslatableText("config.generic.targeted.objects.tooltip"))
                 .setSaveConsumer(n -> config.setEntityTargetGroup(EntityTargetGroup.OBJECT, n));
 
-        // force render name tags
-        SelectorBuilder<String> toggleForceRenderNameTags = entryBuilder.startSelector(new TranslatableText("config.generic.misc.name_tags.title"), Config.ForceRenderNameTagsStrings, config.getForceRenderNameTagsString())
-                .setDefaultValue(defaults.getForceRenderNameTagsString())
-                .setTooltip(new TranslatableText("config.generic.misc.name_tags.tooltip"))
-                .setSaveConsumer(config::setForceRenderNameTags);
-
         // remove blindness effect
         BooleanToggleBuilder toggleRemoveBlindness = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.misc.remove_blindness.title"), config.removeBlindnessEffect)
                 .setDefaultValue(defaults.removeBlindnessEffect)
@@ -118,6 +110,12 @@ public class ScreenBuilder {
                 .setDefaultValue(defaults.exposeBarrierBlocks)
                 .setTooltip(new TranslatableText("config.generic.misc.expose_barriers.tooltip"))
                 .setSaveConsumer(n -> config.exposeBarrierBlocks = n);
+
+        // force render name tags
+        SelectorBuilder<String> toggleForceRenderNameTags = entryBuilder.startSelector(new TranslatableText("config.generic.misc.name_tags.title"), Config.ForceRenderNameTagsStrings, config.getForceRenderNameTagsString())
+                .setDefaultValue(defaults.getForceRenderNameTagsString())
+                .setTooltip(new TranslatableText("config.generic.misc.name_tags.tooltip"))
+                .setSaveConsumer(config::setForceRenderNameTags);
 
         // only enable in creative
         BooleanToggleBuilder toggleOnlyEnableInCreative = entryBuilder.startBooleanToggle(new TranslatableText("config.generic.misc.only_creative.title"), config.onlyEnableInCreative)
@@ -138,9 +136,9 @@ public class ScreenBuilder {
         subCatTargeted = subCatTargetedBuilder.build();
 
         SubCategoryBuilder subCatMiscBuilder = entryBuilder.startSubCategory(new TranslatableText("config.generic.misc.title"));
-        subCatMiscBuilder.add(toggleForceRenderNameTags.build());
         subCatMiscBuilder.add(toggleRemoveBlindness.build());
         subCatMiscBuilder.add(toggleExposeBarriers.build());
+        subCatMiscBuilder.add(toggleForceRenderNameTags.build());
         subCatMiscBuilder.add(toggleOnlyEnableInCreative.build());
         subCatMiscBuilder.setExpanded(subCatMisc != null && subCatMisc.isExpanded());
         subCatMisc = subCatMiscBuilder.build();

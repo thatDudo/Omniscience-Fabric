@@ -1,8 +1,8 @@
-package com.mrqueequeg.omniscience.mixin;
+package com.thatdudo.omniscience.mixin;
 
-import com.mrqueequeg.omniscience.EntityTargetGroup;
-import com.mrqueequeg.omniscience.access.EntityMixinAccess;
-import com.mrqueequeg.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.access.EntityMixinAccess;
+import com.thatdudo.omniscience.config.ConfigManager;
+import com.thatdudo.omniscience.util.EntityTargetGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,20 +19,23 @@ public abstract class EntityMixin implements EntityMixinAccess {
 
     @Override
     public int getEntityTargetGroup() {
-        return entityTargetGroup;
+        return this.entityTargetGroup;
     }
 
     @Inject(at = @At("RETURN"), method = "<init>")
     private void onInit(EntityType<?> type, World world, CallbackInfo info) {
-        entityTargetGroup = EntityTargetGroup.getEntityGroup((Entity)(Object)this) | EntityTargetGroup.ALL;
+        this.entityTargetGroup = EntityTargetGroup.getEntityGroup((Entity)(Object)this);
     }
 
     @Inject(at = @At("HEAD"), method = "isInvisibleTo", cancellable = true)
     private void onIsInvisibleTo(PlayerEntity player, CallbackInfoReturnable<Boolean> info) {
         if (ConfigManager.getConfig().isEnabled()) {
-            if (ConfigManager.getConfig().isGroupTargeted(entityTargetGroup)) {
+            if (ConfigManager.getConfig().isGroupTargeted(this.entityTargetGroup)) {
                 info.setReturnValue(false);
             }
+        }
+        else if (player.isSpectator()) { // FIXME: Find another way to hide invisible entities in replay of ReplayMod
+            info.setReturnValue(true);
         }
     }
 

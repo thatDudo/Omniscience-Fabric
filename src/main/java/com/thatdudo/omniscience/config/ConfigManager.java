@@ -1,8 +1,8 @@
-package com.mrqueequeg.omniscience.config;
+package com.thatdudo.omniscience.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mrqueequeg.omniscience.Omniscience;
+import com.thatdudo.omniscience.Omniscience;
 import net.fabricmc.loader.api.FabricLoader;
 import org.apache.commons.io.FileUtils;
 

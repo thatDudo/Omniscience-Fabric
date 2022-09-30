@@ -6,7 +6,7 @@
   "name": "Omniscience",
   "description": "This mod is all about letting you see things you wouldn't normally get to see.\nIt's main use is revealing invisible entities.",
   "authors": [
-    "MrQueequeg"
+    "thatDudo"
   ],
   "contact": {
     "homepage": "",
@@ -19,10 +19,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.mrqueequeg.omniscience.Omniscience"
+      "com.thatdudo.omniscience.Omniscience"
     ],
     "modmenu": [
-      "com.mrqueequeg.omniscience.plugin.ModMenuIntegration"
+      "com.thatdudo.omniscience.plugin.ModMenuIntegration"
     ]
   },
   "mixins": [

@@ -8,18 +8,18 @@
 
   "config.generic.title": "Generic",
   "config.generic.enabled.title": "Enabled",
-  "config.generic.enabled.tooltip": "Completely enables or disables the mod",
+  "config.generic.enabled.tooltip": "Completely enables or disables this mod",
 
   "config.generic.alpha.title": "Transparency of targets",
   "config.generic.alpha.tooltip": "Sets the transparency of invisible entities",
-  "config.generic.glow.title": "Give invisible entities glow effect",
-  "config.generic.glow.tooltip": "",
+  "config.generic.glow.title": "Highlight invisible entities",
+  "config.generic.glow.tooltip": "Chosen targets gain glow effect when invisible",
   "config.generic.glow.option.none": "None",
   "config.generic.glow.option.player": "Players",
-  "config.generic.glow.option.match_targets": "Match Target List",
+  "config.generic.glow.option.match_targets": "Targets",
 
-  "config.generic.targeted.title": "Target Selection",
-  "config.generic.targeted.tooltip": "Choose which invisible entities should be revealed",
+  "config.generic.targeted.title": "Targets",
+  "config.generic.targeted.tooltip": "Invisible entities that should be revealed",
   "config.generic.targeted.all.title": "All",
   "config.generic.targeted.players.title": "Players",
   "config.generic.targeted.monster.title": "Monster",
@@ -27,21 +27,16 @@
   "config.generic.targeted.animals.title": "Animals",
   "config.generic.targeted.objects.title": "Objects",
 
-  "config.generic.name_tags.force_render.title": "Force render name tags",
-  "config.generic.name_tags.force_render.tooltip": "Completely prevents servers plugins from hiding name tags",
-  "config.generic.name_tags.sneak_cover.title": "Remove Sneak Cover",
-  "config.generic.name_tags.sneak_cover.tooltip": "Don't hide name tags when the owner is sneaking",
-
   "config.generic.misc.title": "Misc",
-  "config.generic.misc.name_tags.title": "Force-Render name tags",
-  "config.generic.misc.name_tags.tooltip": "Will enforce the rendering of\nname tags to a given extent.\nAlways option prevents even modded servers\nfrom hiding name tags.",
-  "config.generic.misc.name_tags.option.never": "Never",
-  "config.generic.misc.name_tags.option.when_sneaking": "When Sneaking",
-  "config.generic.misc.name_tags.option.always": "Always",
   "config.generic.misc.remove_blindness.title": "Remove Blindness",
   "config.generic.misc.remove_blindness.tooltip": "Removes the blindness effect fog",
   "config.generic.misc.expose_barriers.title": "Expose Barrier Blocks",
   "config.generic.misc.expose_barriers.tooltip": "Will highlight barrier blocks without\nthe need of holding a barrier item and being\nin creative mode",
+  "config.generic.misc.name_tags.title": "Force Render Name Tags",
+  "config.generic.misc.name_tags.tooltip": "Will enforce the rendering of name tags\nAlways=Circumvent server plugins",
+  "config.generic.misc.name_tags.option.never": "None",
+  "config.generic.misc.name_tags.option.when_sneaking": "Sneaking",
+  "config.generic.misc.name_tags.option.always": "Always",
   "config.generic.misc.only_creative.title": "Creative Only",
-  "config.generic.misc.only_creative.tooltip": "Only enables the mod if Game Mode is Creative"
+  "config.generic.misc.only_creative.tooltip": "Only enables mod if game mode is set to creative"
 }

@@ -1,8 +1,9 @@
-package com.mrqueequeg.omniscience;
+package com.thatdudo.omniscience.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.decoration.painting.PaintingEntity;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.GolemEntity;
@@ -20,8 +21,9 @@ public class EntityTargetGroup {
     public static final int OBJECT = 32;
 
     public static int getEntityGroup(Entity entity) {
+        int entityGroup = 0;
         if (entity instanceof PlayerEntity) {
-            return EntityTargetGroup.PLAYER;
+            entityGroup = EntityTargetGroup.PLAYER;
         }
         else if (entity instanceof HostileEntity
                 || entity instanceof SlimeEntity
@@ -29,23 +31,24 @@ public class EntityTargetGroup {
                 || entity instanceof PhantomEntity
                 || entity instanceof EnderDragonEntity) {
 
-            return EntityTargetGroup.MONSTER;
+            entityGroup = EntityTargetGroup.MONSTER;
         }
         else if (entity instanceof WanderingTraderEntity
                 || entity instanceof VillagerEntity) {
 
-            return EntityTargetGroup.VILLAGER;
+            entityGroup = EntityTargetGroup.VILLAGER;
         }
         else if (entity instanceof AnimalEntity
                 || entity instanceof WaterCreatureEntity
                 || entity instanceof GolemEntity
                 || entity instanceof AmbientEntity) {
 
-            return EntityTargetGroup.ANIMAL;
+            entityGroup = EntityTargetGroup.ANIMAL;
         }
-        else if (entity instanceof ArmorStandEntity) {
-            return EntityTargetGroup.OBJECT;
+        else if (entity instanceof ArmorStandEntity
+                || entity instanceof PaintingEntity) {
+            entityGroup = EntityTargetGroup.OBJECT;
         }
-        return 0;
+        return entityGroup | EntityTargetGroup.ALL;
     }
 }
