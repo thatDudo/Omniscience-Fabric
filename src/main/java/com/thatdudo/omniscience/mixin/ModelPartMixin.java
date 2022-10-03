@@ -11,7 +11,7 @@ public class ModelPartMixin {
 
     @ModifyVariable(at = @At("HEAD"), method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;IIFFFF)V", ordinal = 3, argsOnly=true)
     private float onRender(float alpha) {
-        if (ConfigManager.getConfig().enabled) {
+        if (ConfigManager.getConfig().isEnabled()) {
             if (alpha != 1.0f) {
                 return ConfigManager.getConfig().alpha;
             }
