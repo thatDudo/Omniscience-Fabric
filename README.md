@@ -1,7 +1,7 @@
 # Omniscience-Fabric
 A fabric mod that reveals invisible entities.
 
-It also works on servers and is not detectable as long as you wont stand out to much.
+It also works on servers and is not detectable.
 _(Even though servers could be modded in a way so that they wont send any player entity data if the player is invisible)_
 
 ###### This mod runs on Fabric and requires the Fabric API: [How to install](https://fabricmc.net/ "How to install")
