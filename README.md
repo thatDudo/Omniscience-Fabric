@@ -6,7 +6,7 @@ _(Even though servers could be modded in a way so that they wont send any player
 
 ###### This mod runs on Fabric and requires the Fabric API: [How to install](https://fabricmc.net/ "How to install")
 
-#### Download Links: **[1.19.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.5%2B1.19/omniscience-fabric-mc1.19-1.0.5.jar)** | **[1.18.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.5%2B1.18.1/omniscience-fabric-mc1.18.2-1.0.5.jar)** | **[1.17.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.17.1/omniscience-fabric-mc1.17-1.0.1.jar)** | **[1.16.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.16.5/omniscience-fabric-mc1.16.5-1.0.1.jar)**
+#### Download Links: **[1.19.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.6%2B1.19/omniscience-fabric-mc1.19-1.0.6.jar)** | **[1.18.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.5%2B1.18.1/omniscience-fabric-mc1.18.2-1.0.5.jar)** | **[1.17.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.17.1/omniscience-fabric-mc1.17-1.0.1.jar)** | **[1.16.x](https://github.com/thatDudo/Omniscience-Fabric/releases/download/1.0.1%2B1.16.5/omniscience-fabric-mc1.16.5-1.0.1.jar)**
 
 
 ![Invisible Player](https://i.postimg.cc/QCCc73Vh/2021-06-30-16-02-56.png "")
