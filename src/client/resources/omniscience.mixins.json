@@ -3,8 +3,7 @@
   "minVersion": "0.8",
   "package": "com.thatdudo.omniscience.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-  ],
+  "mixins": [],
   "client": [
     "EntityMixin",
     "ModelPartMixin",
@@ -13,7 +12,9 @@
     "ClientPlayerInteractionManagerMixin",
     "BackgroundRendererMixin",
     "ClientWorldMixin",
-    "SheepWoolFeatureRendererMixin"
+    "SheepWoolFeatureRendererMixin",
+    "VillagerClothingFeatureRendererMixin",
+    "FeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

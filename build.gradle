@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.8-SNAPSHOT'
+	id 'fabric-loom' version '1.9.2'
 	id 'maven-publish'
 }
 
@@ -35,12 +35,11 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"modid" {
+		"omniscience" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
 	}
-
 }
 
 
@@ -65,7 +64,7 @@ dependencies {
 	}
 }
 
-processResources {
+tasks.withType(ProcessResources).configureEach {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {

@@ -1,0 +1,42 @@
+{
+  "message.enabled": "已啟用 %s",
+  "message.disabled": "已停用 %s",
+
+  "key.category.omniscience": "全知 (Omniscience)",
+  "key.omniscience.settings": "開啟設定",
+  "key.omniscience.enable": "切換啟用狀態",
+
+  "config.generic.title": "一般選項",
+  "config.generic.enabled.title": "啟用模組",
+  "config.generic.enabled.tooltip": "完全啟用或停用此模組",
+
+  "config.generic.alpha.title": "目標透明度",
+  "config.generic.alpha.tooltip": "設定隱形實體的半透明度",
+  "config.generic.glow.title": "發光高亮隱形實體",
+  "config.generic.glow.tooltip": "選定的目標在隱形時獲得發光效果",
+  "config.generic.glow.option.none": "無",
+  "config.generic.glow.option.player": "玩家",
+  "config.generic.glow.option.match_targets": "指定目標",
+
+  "config.generic.targeted.title": "顯示目標",
+  "config.generic.targeted.tooltip": "選擇要揭露顯示的隱形實體類型",
+  "config.generic.targeted.all.title": "全部",
+  "config.generic.targeted.players.title": "玩家",
+  "config.generic.targeted.monster.title": "怪物",
+  "config.generic.targeted.villager.title": "村民/NPC",
+  "config.generic.targeted.animals.title": "動物",
+  "config.generic.targeted.objects.title": "掉落物與物件",
+
+  "config.generic.misc.title": "雜項",
+  "config.generic.misc.remove_blindness.title": "移除失明效果",
+  "config.generic.misc.remove_blindness.tooltip": "移除失明效果所產生的迷霧遮罩",
+  "config.generic.misc.expose_barriers.title": "顯現屏障方塊",
+  "config.generic.misc.expose_barriers.tooltip": "不需要手持屏障方塊或切換至創造模式\n即可直接高亮顯示屏障方塊",
+  "config.generic.misc.name_tags.title": "強制顯示名牌",
+  "config.generic.misc.name_tags.tooltip": "強制渲染實體與玩家的名牌\n選擇「總是」可繞過伺服器插件限制",
+  "config.generic.misc.name_tags.option.never": "無",
+  "config.generic.misc.name_tags.option.when_sneaking": "蹲下時",
+  "config.generic.misc.name_tags.option.always": "總是",
+  "config.generic.misc.only_creative.title": "僅限創造模式",
+  "config.generic.misc.only_creative.tooltip": "僅在遊戲模式設為創造模式時才啟用此模組"
+}

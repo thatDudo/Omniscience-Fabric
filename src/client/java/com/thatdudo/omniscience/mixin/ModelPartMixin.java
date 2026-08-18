@@ -4,18 +4,32 @@ import com.thatdudo.omniscience.config.ConfigManager;
 import net.minecraft.client.model.ModelPart;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(ModelPart.class)
 public class ModelPartMixin {
 
-    @ModifyVariable(at = @At("HEAD"), method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;IIFFFF)V", ordinal = 3, argsOnly=true)
-    private float onRender(float alpha) {
-        if (ConfigManager.getConfig().isEnabled()) {
-            if (alpha != 1.0f) {
-                return ConfigManager.getConfig().alpha;
-            }
+    @ModifyArg(
+            method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;III)V",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/model/ModelPart;renderCuboids(Lnet/minecraft/client/util/math/MatrixStack$Entry;Lnet/minecraft/client/render/VertexConsumer;III)V"
+            ),
+            index = 4
+    )
+    private int modifyColor(int color) {
+        if (!ConfigManager.getConfig().isEnabled()) {
+            return color;
         }
-        return alpha;
+
+        int alpha = (color >>> 24) & 0xFF;
+
+        if (alpha == 255) {
+            return color;
+        }
+
+        int configuredAlpha = Math.round(ConfigManager.getConfig().alpha * 255.0f);
+
+        return (configuredAlpha << 24) | (color & 0x00FFFFFF);
     }
 }
